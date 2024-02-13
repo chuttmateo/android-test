@@ -10,4 +10,5 @@ public abstract class CarinaDescriptionPageBase extends AbstractPage implements 
         super(driver);
     }
     public abstract boolean isProfileNamePresent(String profileName);
+    public abstract UiElementsPageBase openUiElement();
 }

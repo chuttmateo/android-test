@@ -2,6 +2,7 @@ package com.solvd.carina.carina.android;
 
 
 import com.solvd.carina.carina.common.CarinaDescriptionPageBase;
+import com.solvd.carina.carina.common.UiElementsPageBase;
 import com.zebrunner.carina.utils.factory.DeviceType;
 import com.zebrunner.carina.webdriver.decorator.ExtendedWebElement;
 import com.zebrunner.carina.webdriver.locator.ExtendedFindBy;
@@ -13,6 +14,9 @@ public class CarinaDescriptionPage extends CarinaDescriptionPageBase {
 
     @ExtendedFindBy(accessibilityId = "Navigate up")
     private ExtendedWebElement openMenuButton;
+
+    @ExtendedFindBy(text = "UI elements")
+    private ExtendedWebElement openUiElementButton;
 
     @FindBy(xpath = "//android.widget.TextView[@text='%s']")
     private ExtendedWebElement profileNameElement;
@@ -29,6 +33,13 @@ public class CarinaDescriptionPage extends CarinaDescriptionPageBase {
         openMenuButton.click();
         profileNameElement.format(profileName);
         return profileNameElement.isPresent();
+    }
+
+    @Override
+    public UiElementsPageBase openUiElement() {
+        openMenuButton.click();
+        openUiElementButton.click();
+        return initPage(getDriver(), UiElementsPageBase.class);
     }
 
     @Override
